@@ -1,6 +1,17 @@
 package HW_1;
 
 public class StringListImpl implements StringList {
+
+    String item;
+    int index;
+String[] items = new String[10];
+
+    public StringListImpl(String item, int index, String[] items) {
+        this.item = item;
+        this.index = index;
+        this.items = items;
+    }
+
     @Override
     public String add(String item) {
         return null;
