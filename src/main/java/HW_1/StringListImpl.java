@@ -1,84 +1,147 @@
 package HW_1;
 
+import java.util.Arrays;
+
+import static java.util.Arrays.copyOf;
+
 public class StringListImpl implements StringList {
 
-    String item;
-    int index;
-String[] items = new String[10];
 
-    public StringListImpl(String item, int index, String[] items) {
-        this.item = item;
-        this.index = index;
-        this.items = items;
+private final String[] items;
+private int size;
+
+    public StringListImpl() {
+
+        items = new String[10];
     }
+    public StringListImpl(int initSize){
+        items= new String[initSize];
+    }
+
 
     @Override
     public String add(String item) {
-        return null;
+        validateSize();
+        validateItem(item);
+        items[size++] = item;
+        return item;
     }
 
     @Override
     public String add(int index, String item) {
-        return null;
+        validateSize();
+        validateItem(item);
+        validateIndex(index);
+        if(index == size){
+            items[size++] = item;
+            return item;
+        }
+        System.arraycopy(items, index, items, index +1, size - index);
+        items[index]= item;
+        size++;
+        return item;
     }
 
     @Override
     public String set(int index, String item) {
-        return null;
+        validateIndex(index);
+        validateItem(item);
+         items[index]= item;
+         return item;
     }
 
     @Override
     public String remove(String item) {
-        return null;
+        validateItem(item);
+        int index = indexOf(item);
+
+
+        return remove(index);
     }
 
     @Override
     public String remove(int index) {
-        return null;
+validateIndex(index);
+
+        String item = items[index];
+        if(index!=size){
+            System.arraycopy(items,index+1,items,index,size-(index+1));
+        }
+
+        size--;
+        return item;
+
     }
 
     @Override
     public boolean contains(String item) {
-        return false;
+        return indexOf(item) != -1;
     }
 
     @Override
     public int indexOf(String item) {
-        return 0;
+        for (int i = 0; i < size; i++) {
+String s = items[i];
+if(s.equals(item)){
+    return i;
+}
+        }
+
+        return -1;
     }
 
     @Override
     public int lastIndexOf(String item) {
-        return 0;
+        for (int i = size -1; i >0 ; i--) {
+            
+        }
+        return -1;
     }
 
     @Override
     public String get(int index) {
-        return null;
+        validateIndex(index);
+        return items[index];
     }
 
     @Override
     public boolean equals(StringList otherList) {
-        return false;
+        return Arrays.equals(this.toArray(),otherList.toArray());
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size ==0;
     }
 
     @Override
     public void clear() {
-
+   size=0;
     }
 
     @Override
     public String[] toArray() {
-        return new String[0];
+        return Arrays.copyOf(items, size);
+    }
+
+    private void validateItem(String item){
+        if(item == null){
+            throw new NullItemException();
+        }
+    }
+    private void validateSize(){
+        if(size==items.length){
+            throw new ItemsIzFullException();
+        }
+    }
+    private void validateIndex(int index){
+        if(index< 0 || index >= size){
+            throw new InvalidIndexException();
+        }
     }
 }
