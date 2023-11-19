@@ -144,4 +144,12 @@ if(s.equals(item)){
             throw new InvalidIndexException();
         }
     }
+
+    @Override
+    public String toString() {
+        return "StringListImpl{" +
+                "items=" + Arrays.toString(items) +
+                ", size=" + size +
+                '}';
+    }
 }
