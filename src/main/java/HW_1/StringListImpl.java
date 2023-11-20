@@ -54,15 +54,13 @@ private int size;
     public String remove(String item) {
         validateItem(item);
         int index = indexOf(item);
-
-
         return remove(index);
     }
 
     @Override
     public String remove(int index) {
-validateIndex(index);
 
+        validateIndex(index);
         String item = items[index];
         if(index!=size){
             System.arraycopy(items,index+1,items,index,size-index);
@@ -121,7 +119,8 @@ if(s.equals(item)){
 
     @Override
     public void clear() {
-   size=0;
+        for (int to = size, i = size = 0; i < to; i++)
+            items[i] = null;
     }
 
     @Override
