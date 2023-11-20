@@ -18,11 +18,12 @@ public class Main {
 
         stringList1.remove("string");
         System.out.println();
-        System.out.println("Метод remov Strin " +stringList1.toString());
+        System.out.println("Метод remov String " +stringList1.toString());
 
         stringList1.remove(0);
         System.out.println();
         System.out.println("Метод remov index " + stringList1.toString());
+
 
         stringList1.clear();
         System.out.println();

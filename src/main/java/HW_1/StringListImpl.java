@@ -65,7 +65,7 @@ validateIndex(index);
 
         String item = items[index];
         if(index!=size){
-            System.arraycopy(items,index+1,items,index,size-(index+1));
+            System.arraycopy(items,index+1,items,index,size-index);
         }
 
         size--;

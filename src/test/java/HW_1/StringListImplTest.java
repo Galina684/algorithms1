@@ -1,17 +1,21 @@
 package HW_1;
 
-import org.junit.jupiter.api.BeforeEach;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.Arguments;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.stream.Stream;
 
 class StringListImplTest {
-StringListImpl stringList = new StringListImpl();
+StringListImpl out = new StringListImpl();
 
-    @Test
-    void add() {
 
-    }
+//    @ParameterizedTest
+//    @CsvSource({"string1, string2, string3"})
+//    void add(String s) {
+//        List<String> stringList = out.add(String s);
+//
+//    }
 
     @Test
     void testAdd() {
