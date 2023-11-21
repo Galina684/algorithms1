@@ -139,7 +139,7 @@ if(s.equals(item)){
         }
     }
     private void validateIndex(int index){
-        if(index< 0 || index >= size){
+        if(index< 0 || index > size){
             throw new InvalidIndexException();
         }
     }

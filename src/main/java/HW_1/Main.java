@@ -12,6 +12,7 @@ public class Main {
         System.out.println();
         System.out.println("Метод add " + stringList1.toString());
 
+
         stringList1.toArray();
         System.out.println();
         System.out.println("Метод toArray " + stringList1.toString());
