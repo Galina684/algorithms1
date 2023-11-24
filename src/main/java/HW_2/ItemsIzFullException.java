@@ -1,4 +1,4 @@
-package HW_1;
+package HW_2;
 
 public class ItemsIzFullException extends RuntimeException {
     public ItemsIzFullException() {

@@ -1,4 +1,4 @@
-package HW_1;
+package HW_2;
 
 public class NullItemException extends RuntimeException {
     public NullItemException() {
