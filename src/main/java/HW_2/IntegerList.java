@@ -9,7 +9,7 @@ public interface IntegerList {
 
     Integer removeValue(Integer item);
 
-    Integer remove(int index);
+    Integer removeIndex(int index);
 
     boolean contains(Integer item);
 

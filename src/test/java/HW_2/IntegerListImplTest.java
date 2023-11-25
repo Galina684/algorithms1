@@ -18,8 +18,20 @@ class IntegerListImplTest {
 
     @Test
     void testAdd() {
-        assertFalse(out.contains(111));
+
         out.add(0, 111);
+        out.add(1, 111);
+        out.add(2, 111);
+        out.add(3, 111);
+        out.add(4, 111);
+        out.add(5, 111);
+        out.add(6, 111);
+        out.add(7, 111);
+        out.add(8, 111);
+        out.add(9, 111);
+        out.add(10, 111);
+        out.add(11, 111);
+        assertEquals(out.size(), 12);
 
     }
 
@@ -42,14 +54,14 @@ class IntegerListImplTest {
     }
 
     @Test
-    void testRemove() {
+    void testRemoveIndex() {
         out.add(111);
         out.add(222);
-        out.remove(0);
+        out.removeIndex(0);
         assertFalse(out.contains(111));
         assertEquals(222, 222);
         assertThrows(InvalidIndexException.class, () -> {
-            out.remove(3);
+            out.removeIndex(3);
         });
     }
 
@@ -78,7 +90,7 @@ class IntegerListImplTest {
         out.add(555);
         out.add(111);
         out.get(1);
-        assertEquals("string1", "string1");
+        assertTrue(out.contains(111));
     }
 
     @Test

@@ -2,9 +2,11 @@ package HW_2;
 
 import java.util.Arrays;
 
+import static HW_2.SortingMethodsCheck.swapElements;
+
 public class IntegerListImpl implements IntegerList {
 
-    private final Integer[] items;
+    private  Integer[] items;
     private int size;
 
     public IntegerListImpl() {
@@ -52,11 +54,10 @@ public class IntegerListImpl implements IntegerList {
     public Integer removeValue(Integer item) {
         validateItem(item);
         int index = indexOf(item);
-        return remove(index);
+        return this.removeIndex(index);
     }
 
-    @Override
-    public Integer remove(int index) {
+    public Integer removeIndex(int index) {
 
         validateIndex(index);
         Integer item = items[index];
@@ -136,7 +137,7 @@ public class IntegerListImpl implements IntegerList {
 
     private void validateSize() {
         if (size == items.length) {
-            throw new ItemsIzFullException();
+            grow();
         }
     }
 
@@ -148,15 +149,7 @@ public class IntegerListImpl implements IntegerList {
 
 
     private void sort(Integer[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int temp = arr[i];
-            int j = i;
-            while (j > 0 && arr[j - 1] >= temp) {
-                arr[j] = arr[j - 1];
-                j--;
-            }
-            arr[j] = temp;
-        }
+     quickSort(arr,0,arr.length-1);
 
     }
 
@@ -178,6 +171,38 @@ public class IntegerListImpl implements IntegerList {
             }
         }
         return false;
+    }
+    private void grow(){
+        items = Arrays.copyOf(items, size + size/2);
+    }
+    public static void quickSort(Integer[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
+    }
+
+    private static int partition(Integer[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                swapElements(arr, i, j);
+            }
+        }
+
+        swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+    private static void swapElements(Integer[] arr, int left, int right) {
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
     }
 
     @Override

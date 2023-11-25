@@ -23,7 +23,7 @@ public class Main {
         System.out.println();
         System.out.println("Метод remov значение " +IntegerList1.toString());
 
-        IntegerList1.remove(0);
+        IntegerList1.removeIndex(0);
         System.out.println();
         System.out.println("Метод remov index " + IntegerList1.toString());
 
